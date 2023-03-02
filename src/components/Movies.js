@@ -2,15 +2,13 @@ import React from 'react';
 import { useGlobalContext } from '../context';
 
 const Movies = () => {
-    const { movie } = useGlobalContext();
+    const { movie } = useGlobalContext(); //eslint-disable-line
     return (
         <>
-            {movie.map((currMovie) => {
-                return (
-                    <div>
-                        <h2>{currMovie.Title}</h2>
-                    </div>
-                )
+            {movie.map((curMovie) => {
+                return <div>
+                    <h2>{curMovie.Title}</h2>
+                </div>
             })}
         </>
     )

@@ -1,32 +1,26 @@
-import React, { useContext, useEffect, useState } from 'react';
-
-//Context <API /></ >
-//useContext hooks
-
-//context(warehouse)
-//Provider
-//Consumer / (useContext())
-
-const AppContext = React.createContext();
+import React, { useContext, useState, useEffect } from "react";
 
 const API_URL = `http://www.omdbapi.com/?apikey=be2acd45&s=titanic`;
+
+const AppContext = React.createContext();
 
 //creating provider function
 const AppProvider = ({ children }) => {
 
-    const [isLoading, setIsLoading] = useState(true); //eslint-disable-line
-    const [movie, setMovie] = useState(true); // eslint-disable-line
-    const [isError, setIsError] = useState({ show: 'false', msg: "" }); // eslint-disable-line
+    const [isLoading, setIsLoading] = useState(true);
+    const [movie, setMovie] = useState([]);
+    const [IsError, setIsError] = useState({ show: "false", msg: "" });
 
     const getMovies = async (url) => {
         try {
             const res = await fetch(url);
             const data = await res.json();
             console.log(data);
-            if (data.Response === 'True') {
+            if (data.Response === "True") {
                 setIsLoading(false);
                 setMovie(data.Search);
-            } else {
+            }
+            else {
                 setIsError({
                     show: true,
                     msg: data.error,
@@ -42,14 +36,10 @@ const AppProvider = ({ children }) => {
         getMovies(API_URL);
     }, []);
 
-
-    return <AppContext.Provider value={{ isLoading, isError, movie }}>
+    return <AppContext.Provider value={{ isLoading, IsError, movie }}>
         {children}
     </AppContext.Provider>
 }
-
-
-//creating global custom hooks
 
 const useGlobalContext = () => {
     return useContext(AppContext);

@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 
-const API_URL = `http://www.omdbapi.com/?apikey=be2acd45&s=titanic`;
+const API_URL = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&s=titanic`;
 
 const AppContext = React.createContext();
 

@@ -1,16 +1,27 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { useGlobalContext } from '../context';
 
 const Movies = () => {
     const { movie } = useGlobalContext(); //eslint-disable-line
     return (
-        <>
-            {movie.map((curMovie) => {
-                return <div>
-                    <h2>{curMovie.Title}</h2>
-                </div>
-            })}
-        </>
+        <section className='movie-page'>
+            <div className='grid grid-4-col'>
+                {movie.map((curMovie) => {
+                    const { imdbID, Title, Poster } = curMovie;
+                    return (
+                        <NavLink to={`movie/${imdbID}`} key={imdbID}>
+                            <div className='card'>
+                                <div className='card-info'>
+                                    <h2>{Title}</h2>
+                                    <img src={Poster} alt={imdbID}></img>
+                                </div>
+                            </div>
+                        </NavLink>
+                    );
+                })}
+            </div>
+        </section>
     )
 }
 

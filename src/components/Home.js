@@ -4,9 +4,10 @@ import Movies from "./Movies";
 const Home = () => {
     return (
         <>
-            <Search />
-            <Movies />
-            <div>Home Page</div>
+            <div className="container">
+                <Search />
+                <Movies />
+            </div>
         </>
     )
 }

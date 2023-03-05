@@ -33,7 +33,7 @@ const MoviePage = () => {
 
     if (isLoading) {
         return (
-            <div className='movie-section'>
+            <div>
                 <div className='loading'>Loading...</div>
             </div>
         )
